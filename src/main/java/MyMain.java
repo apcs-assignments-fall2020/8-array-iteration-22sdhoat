@@ -38,13 +38,23 @@ public class MyMain {
 
     // Checks to see if an array contains a geometric series
     public static boolean isGeometric(int[] arr) {
-        int x = arr[1] / arr[0];
-        for (int i = -1; i < arr.length; i++) {
-            if (arr[i+1] / arr[i] != x) {
-                return false;
+        double[] factor = new double[arr.length-1];
+        for (int i = 0; i<arr.length - 1; i++) {
+            factor[i] = Double.valueOf(arr[i+1])/Double.valueOf(arr[i]);
+        }
+        int count = 0;
+        for (int i = 1; i < factor.length; i++){
+            if (factor[i] == factor[i-1]){
+                count +=1;
             }
         }
-        return true;
+        if (count == factor.length -1){
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
 
